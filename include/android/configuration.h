@@ -428,6 +428,17 @@ enum {
      * 0 cannot be used, since it is used to represent an undefined MNC.
      */
     ACONFIGURATION_MNC_ZERO = 0xffff,
+
+    /** UI alliance mode: not specified.*/
+    ACONFIGURATION_UI_MODE_ALLIANCE_ANY = 0x00,
+    /**
+     * UI alliance mode: value that corresponds to the 'notalliance' resource qualifier.
+     */
+    ACONFIGURATION_UI_MODE_ALLIANCE_NO = 0x1,
+    /**
+     * UI alliance mode: value that corresponds to the 'alliance' resource qualifier.
+     */
+    ACONFIGURATION_UI_MODE_ALLIANCE_YES = 0x2,
 };
 
 /**
@@ -698,6 +709,16 @@ int32_t AConfiguration_match(AConfiguration* base, AConfiguration* requested);
  */
 int32_t AConfiguration_isBetterThan(AConfiguration* base, AConfiguration* test,
         AConfiguration* requested);
+
+/**
+ * Return the current ACONFIGURATION_UI_MODE_ALLIANCE_* set in the configuration.
+ */
+int32_t AConfiguration_getUiModeAlliance(AConfiguration* config);
+
+/**
+ * Set the current UI Alliance in the configuration.
+ */
+void AConfiguration_setUiModeAlliance(AConfiguration* config, int32_t uiModeAlliance);
 
 #ifdef __cplusplus
 };
